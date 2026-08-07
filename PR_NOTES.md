@@ -8,3 +8,5 @@ Summary of work in this branch:
 - Unit tests and smoke check updates
 
 If you prefer a different PR description or want me to add reviewers, tell me and I'll update the draft PR accordingly.
+
+Rerun trigger: 2026-08-07T09:08:30Z
