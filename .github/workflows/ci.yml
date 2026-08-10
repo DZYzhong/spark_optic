@@ -21,8 +21,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel build
-          # Use a non-editable install in CI for more reproducible builds
-          pip install .
+          # Run pip install with verbose logging and capture output for debugging
+          set -o pipefail
+          python -m pip install . 2>&1 | tee ci-pip-install.log
+          if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+            echo "pip install failed — printing log:"; cat ci-pip-install.log; exit 1
+          fi
           pip install pytest
 
       - name: Run pytest
@@ -45,8 +49,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel build
-          # Use a non-editable install in CI for more reproducible builds
-          pip install .
+          # Run pip install with verbose logging and capture output for debugging
+          set -o pipefail
+          python -m pip install . 2>&1 | tee ci-pip-install.log
+          if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+            echo "pip install failed — printing log:"; cat ci-pip-install.log; exit 1
+          fi
 
       - name: Start app (demo mode)
         env:
