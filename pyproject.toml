@@ -1,0 +1,18 @@
+[project]
+name = "spark-optic"
+version = "0.1.0"
+description = "Spark task optimization MVP using FastAPI."
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi",
+  "jinja2",
+  "uvicorn",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
